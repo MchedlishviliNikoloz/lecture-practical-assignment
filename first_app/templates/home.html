@@ -1,0 +1,40 @@
+
+{% extends 'base.html' %}
+
+{% block title %}მთავარი გვერდი{% endblock %}
+
+{% block content %}
+
+<h1>კომპანიის მართვის სისტემა</h1>
+<p>მოგესალმები კომპანიის მართვის სისტემაში!</p>
+
+<div class="stats">
+
+    <div class="stat">
+        <h2>{{ companies_count }}</h2>
+        <p>კომპანიები</p>
+    </div>
+
+    <div class="stat">
+        <h2>{{ departments_count }}</h2>
+        <p>დეპარტამენტები</p>
+    </div>
+
+    <div class="stat">
+        <h2>{{ employees_count }}</h2>
+        <p>თანამშრომლები</p>
+    </div>
+
+    <div class="stat">
+        <h2>{{ positions_count }}</h2>
+        <p>პოზიციები</p>
+    </div>
+
+    <div class="stat">
+        <h2>{{ projects_count }}</h2>
+        <p>პროექტები</p>
+    </div>
+
+</div>
+
+{% endblock %}

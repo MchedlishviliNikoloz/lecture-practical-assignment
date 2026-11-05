@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block title %}დეპარტამენტები{% endblock %}
+
+{% block content %}
+
+<h1>დეპარტამენტები</h1>
+
+{% for department in departments %}
+
+<div class="card">
+
+    <h2>{{ department.name }}</h2>
+
+    <p>{{ department.description }}</p>
+
+    <p>
+        <strong>კომპანია:</strong>
+        {{ department.company.name }}
+    </p>
+
+    <h3>თანამშრომლების რაოდენობა:</h3>
+    <p>{{ department.employees.count }}</p>
+
+</div>
+
+{% empty %}
+<p>დეპარტამენტები არ არის დამატებული.</p>
+{% endfor %}
+
+{% endblock %}

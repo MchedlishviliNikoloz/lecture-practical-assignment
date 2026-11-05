@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %}თანამშრომლები{% endblock %}
+
+{% block content %}
+
+<h1>თანამშრომლები</h1>
+
+{% for employee in employees %}
+
+<div class="card">
+
+    <h2>{{ employee.first_name }} {{ employee.last_name }}</h2>
+
+    <p>Email: {{ employee.email }}</p>
+
+    <p>დეპარტამენტი: {{ employee.department.name }}</p>
+
+    <p>პოზიცია: {{ employee.position.title }}</p>
+
+    <p>
+        სტატუსი:
+        {% if employee.is_active %}
+            აქტიური
+        {% else %}
+            არააქტიური
+        {% endif %}
+    </p>
+
+    <a href="{% url 'employee_detail' employee.id %}" class="btn">
+        დეტალურად
+    </a>
+
+</div>
+
+{% empty %}
+<p>თანამშრომლები არ არის დამატებული.</p>
+{% endfor %}
+
+{% endblock %}

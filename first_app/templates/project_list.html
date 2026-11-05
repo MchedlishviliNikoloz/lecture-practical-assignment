@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+
+{% block title %}პროექტები{% endblock %}
+
+{% block content %}
+
+<h1>პროექტები</h1>
+
+{% for project in projects %}
+
+<div class="card">
+
+    <h2>{{ project.name }}</h2>
+
+    <p>{{ project.description }}</p>
+
+    <p>კომპანია: {{ project.company.name }}</p>
+
+    <p>დაწყების თარიღი: {{ project.start_date }}</p>
+
+    <p>დასრულების თარიღი: {{ project.end_date|default:"ჯერ არ დასრულებულა" }}</p>
+
+    <p>თანამშრომლები: {{ project.employees.count }}</p>
+
+    <a href="{% url 'project_detail' project.id %}" class="btn">
+        დეტალურად
+    </a>
+
+</div>
+
+{% empty %}
+<p>პროექტები ჯერ არ არის დამატებული.</p>
+{% endfor %}
+
+{% endblock %}

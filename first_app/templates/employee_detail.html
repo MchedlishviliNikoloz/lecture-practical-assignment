@@ -1,0 +1,65 @@
+
+{% extends 'base.html' %}
+
+{% block title %}თანამშრომლის დეტალები{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>
+        {{ employee.first_name }} {{ employee.last_name }}
+    </h1>
+
+    <p>Email: {{ employee.email }}</p>
+
+    <p>დეპარტამენტი: {{ employee.department.name }}</p>
+
+    <p>პოზიცია: {{ employee.position.title }}</p>
+
+    <p>ხელფასი: {{ employee.position.salary }}</p>
+
+    <p>
+        სტატუსი:
+        {% if employee.is_active %}
+            აქტიური
+        {% else %}
+            არააქტიური
+        {% endif %}
+    </p>
+
+    <hr>
+
+    <h2>პირადი პროფილი</h2>
+
+    {% if employee.profile %}
+
+        <p>ტელეფონი: {{ employee.profile.phone }}</p>
+
+        <p>დაბადების თარიღი: {{ employee.profile.birth_date }}</p>
+
+        <p>ბიოგრაფია: {{ employee.profile.bio }}</p>
+
+    {% else %}
+
+        <p>პროფილი ჯერ არ არის შექმნილი.</p>
+
+    {% endif %}
+
+    <hr>
+
+    <h2>პროექტები</h2>
+
+    {% for project in employee.projects.all %}
+        <p>
+            <a href="{% url 'project_detail' project.id %}">
+                {{ project.name }}
+            </a>
+        </p>
+    {% empty %}
+        <p>თანამშრომელი პროექტებში არ მონაწილეობს.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

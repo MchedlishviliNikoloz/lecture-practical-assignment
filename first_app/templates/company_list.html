@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block title %}კომპანიები{% endblock %}
+
+{% block content %}
+
+<h1>კომპანიების სია</h1>
+
+{% for company in companies %}
+
+<div class="card">
+    <h2>{{ company.name }}</h2>
+    <p>{{ company.description }}</p>
+    <p>დაარსების თარიღი: {{ company.founded_date }}</p>
+
+    <a href="{% url 'company_detail' company.id %}" class="btn">
+        დეტალურად
+    </a>
+</div>
+
+{% empty %}
+<p>კომპანიები ჯერ არ არის დამატებული.</p>
+{% endfor %}
+
+{% endblock %}

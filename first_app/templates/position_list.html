@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+
+{% block title %}პოზიციები{% endblock %}
+
+{% block content %}
+
+<h1>სამუშაო პოზიციები</h1>
+
+{% for position in positions %}
+
+<div class="card">
+
+    <h2>{{ position.title }}</h2>
+
+    <p>{{ position.description }}</p>
+
+    <p>ხელფასი: {{ position.salary }}</p>
+
+    <p>
+        თანამშრომლების რაოდენობა:
+        {{ position.employees.count }}
+    </p>
+
+</div>
+
+{% empty %}
+<p>პოზიციები ჯერ არ არის დამატებული.</p>
+{% endfor %}
+
+{% endblock %}

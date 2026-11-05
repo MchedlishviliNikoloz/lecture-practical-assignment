@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+
+{% block title %}{{ company.name }}{% endblock %}
+
+{% block content %}
+
+<div class="card">
+
+    <h1>{{ company.name }}</h1>
+
+    <p>{{ company.description }}</p>
+
+    <p>
+        <strong>დაარსების თარიღი:</strong>
+        {{ company.founded_date }}
+    </p>
+
+    <h2>დეპარტამენტები</h2>
+
+    {% for department in company.departments.all %}
+        <p>{{ department.name }}</p>
+    {% empty %}
+        <p>დეპარტამენტები არ არის.</p>
+    {% endfor %}
+
+    <h2>პროექტები</h2>
+
+    {% for project in company.projects.all %}
+        <p>
+            <a href="{% url 'project_detail' project.id %}">
+                {{ project.name }}
+            </a>
+        </p>
+    {% empty %}
+        <p>პროექტები არ არის.</p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
